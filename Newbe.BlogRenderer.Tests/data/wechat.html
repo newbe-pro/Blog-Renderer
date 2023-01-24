@@ -1,0 +1,232 @@
+﻿<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com"
+         style="font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+    <hr data-tool="mdnice编辑器"
+        style="height: 1px; margin: 0; margin-top: 10px; margin-bottom: 10px; border: none; border-top: 1px solid black;">
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">date:
+        2023-01-01
+        title: 在 C# 9 中使用 foreach 扩展
+        tags:</p>
+    <ul data-tool="mdnice编辑器"
+        style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+        <li>
+            <section
+                    style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                dotnet
+            </section>
+        </li>
+        <li>
+            <section
+                    style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                chatOpenAI
+            </section>
+        </li>
+    </ul>
+    <hr data-tool="mdnice编辑器"
+        style="height: 1px; margin: 0; margin-top: 10px; margin-bottom: 10px; border: none; border-top: 1px solid black;">
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">在 C#
+        9 中，foreach 循环可以使用扩展方法。在本文中，我们将通过例子回顾 C# 9 中如何扩展 foreach 循环。</p>
+    <!-- more -->
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+                                                                 style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">代码演示</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;"> </span>
+    </h2>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        下面是一个对树形结构进行深度优先遍历的示例代码：</p>
+    <pre class="custom" data-tool="mdnice编辑器"
+         style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span
+            style="display: block; background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #fafafa; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code
+            class="hljs"
+            style="overflow-x: auto; padding: 16px; color: #383a42; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #fafafa; border-radius: 5px;"><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">using</span>&nbsp;System;<br><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">using</span>&nbsp;System.Collections.Generic;<br><br><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">namespace</span>&nbsp;<span
+            class="hljs-title" style="color: #4078f2; line-height: 26px;">Example</span><br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">class</span>&nbsp;<span class="hljs-title"
+                                                                                                    style="color: #4078f2; line-height: 26px;">TreeNode</span><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">public</span>&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">int</span>&nbsp;Value&nbsp;{&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">get</span>;&nbsp;<span class="hljs-keyword"
+                                                                                                   style="color: #a626a4; line-height: 26px;">set</span>;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">public</span>&nbsp;List&lt;TreeNode&gt;&nbsp;Children&nbsp;{&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">get</span>;&nbsp;<span class="hljs-keyword"
+                                                                                                   style="color: #a626a4; line-height: 26px;">set</span>;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword"
+                                                                   style="color: #a626a4; line-height: 26px;">public</span>&nbsp;<span
+            class="hljs-title" style="color: #4078f2; line-height: 26px;">TreeNode</span>(<span class="hljs-params"
+                                                                                                style="line-height: 26px;"><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">int</span>&nbsp;<span class="hljs-keyword"
+                                                                                                  style="color: #a626a4; line-height: 26px;">value</span></span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Value&nbsp;=&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">value</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Children&nbsp;=&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">new</span>&nbsp;List&lt;TreeNode&gt;();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">static</span>&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">class</span>&nbsp;<span class="hljs-title"
+                                                                                                    style="color: #4078f2; line-height: 26px;">TreeExtensions</span><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword"
+                                                                   style="color: #a626a4; line-height: 26px;">public</span>&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">static</span>&nbsp;IEnumerable&lt;TreeNode&gt;&nbsp;<span
+            class="hljs-title" style="color: #4078f2; line-height: 26px;">DepthFirst</span>(<span class="hljs-params"
+                                                                                                  style="line-height: 26px;"><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">this</span>&nbsp;TreeNode&nbsp;root</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">yield</span>&nbsp;<span class="hljs-keyword"
+                                                                                                    style="color: #a626a4; line-height: 26px;">return</span>&nbsp;root;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">foreach</span>&nbsp;(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">var</span>&nbsp;child&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">in</span>&nbsp;root.Children.SelectMany(DepthFirst))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">yield</span>&nbsp;<span class="hljs-keyword"
+                                                                                                    style="color: #a626a4; line-height: 26px;">return</span>&nbsp;child;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">class</span>&nbsp;<span class="hljs-title"
+                                                                                                    style="color: #4078f2; line-height: 26px;">Program</span><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword"
+                                                                   style="color: #a626a4; line-height: 26px;">static</span>&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">void</span>&nbsp;<span class="hljs-title"
+                                                                                                   style="color: #4078f2; line-height: 26px;">Main</span>(<span
+            class="hljs-params" style="line-height: 26px;"><span class="hljs-keyword"
+                                                                 style="color: #a626a4; line-height: 26px;">string</span>[]&nbsp;args</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">var</span>&nbsp;root&nbsp;=&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">new</span>&nbsp;TreeNode(<span
+            class="hljs-number" style="color: #986801; line-height: 26px;">1</span>);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root.Children.Add(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">new</span>&nbsp;TreeNode(<span
+            class="hljs-number" style="color: #986801; line-height: 26px;">2</span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root.Children.Add(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">new</span>&nbsp;TreeNode(<span
+            class="hljs-number" style="color: #986801; line-height: 26px;">3</span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root.Children[<span
+            class="hljs-number" style="color: #986801; line-height: 26px;">0</span>].Children.Add(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">new</span>&nbsp;TreeNode(<span
+            class="hljs-number" style="color: #986801; line-height: 26px;">4</span>));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root.Children[<span
+            class="hljs-number" style="color: #986801; line-height: 26px;">0</span>].Children.Add(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">new</span>&nbsp;TreeNode(<span
+            class="hljs-number" style="color: #986801; line-height: 26px;">5</span>));<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">foreach</span>&nbsp;(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">var</span>&nbsp;node&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">in</span>&nbsp;root.DepthFirst())<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(node.Value);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-comment" style="color: #a0a1a7; font-style: italic; line-height: 26px;">//&nbsp;Outputs:&nbsp;1&nbsp;2&nbsp;4&nbsp;5&nbsp;3</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br></code></pre>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        在这个示例代码中，我们在 TreeNode 类中定义了一个值属性和一个存储子节点的列表属性。我们还在 TreeExtensions 类中定义了一个
+        DepthFirst 扩展方法，该方法使用 yield return 语句来返回树形结构的深度优先遍历结果。</p>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">在
+        Main 方法中，我们创建了一个树形结构，然后使用 foreach 循环来遍历树形结构的深度优先遍历结果。</p>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        之所以使用扩展方法往往是因为，我们可以在不修改 TreeNode 类的情况下，为 TreeNode 类添加新的功能。</p>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        那么接下来我们希望在 C# 9 中默认为 TreeNode 类添加 DepthFirst 行为，这样我们就可以直接使用 foreach
+        循环来遍历树形结构的深度优先遍历结果了。</p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+                                                                 style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">C# 9 中的 foreach 扩展</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;"> </span>
+    </h2>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">在 C#
+        9 中，我们可以使用 foreach 扩展来实现上面的需求。我们只需要在 TreeNode 类中添加一个 GetEnumerator 方法，该方法返回一个实现了
+        IEnumerable
+        <treenode> 接口的对象即可。</treenode>
+    </p>
+    <pre class="custom" data-tool="mdnice编辑器"
+         style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span
+            style="display: block; background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #fafafa; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code
+            class="hljs"
+            style="overflow-x: auto; padding: 16px; color: #383a42; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #fafafa; border-radius: 5px;"><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">static</span>&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">class</span>&nbsp;<span class="hljs-title"
+                                                                                                    style="color: #4078f2; line-height: 26px;">TreeExtensions</span><br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword"
+                                                                   style="color: #a626a4; line-height: 26px;">public</span>&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">static</span>&nbsp;IEnumerable&lt;TreeNode&gt;&nbsp;<span
+            class="hljs-title" style="color: #4078f2; line-height: 26px;">DepthFirst</span>(<span class="hljs-params"
+                                                                                                  style="line-height: 26px;"><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">this</span>&nbsp;TreeNode&nbsp;root</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">yield</span>&nbsp;<span class="hljs-keyword"
+                                                                                                    style="color: #a626a4; line-height: 26px;">return</span>&nbsp;root;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">foreach</span>&nbsp;(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">var</span>&nbsp;child&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">in</span>&nbsp;root.Children.SelectMany(DepthFirst))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">yield</span>&nbsp;<span class="hljs-keyword"
+                                                                                                    style="color: #a626a4; line-height: 26px;">return</span>&nbsp;child;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword"
+                                                                   style="color: #a626a4; line-height: 26px;">public</span>&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">static</span>&nbsp;IEnumerator&lt;TreeNode&gt;&nbsp;<span
+            class="hljs-title" style="color: #4078f2; line-height: 26px;">GetEnumerator</span>(<span class="hljs-params"
+                                                                                                     style="line-height: 26px;"><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">this</span>&nbsp;TreeNode&nbsp;root</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">return</span>&nbsp;root.DepthFirst().GetEnumerator();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br></code></pre>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        在上面的代码中，我们在 TreeNode 类中添加了一个 GetEnumerator 方法，该方法返回一个实现了 IEnumerable
+        <treenode> 接口的对象。这个对象就是我们在 DepthFirst 方法中使用 yield return 语句返回的结果。</treenode>
+    </p>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        现在我们可以直接使用 foreach 循环来遍历树形结构的深度优先遍历结果了。</p>
+    <pre class="custom" data-tool="mdnice编辑器"
+         style="margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;"><span
+            style="display: block; background: url(https://files.mdnice.com/user/3441/876cad08-0422-409d-bb5a-08afec5da8ee.svg); height: 30px; width: 100%; background-size: 40px; background-repeat: no-repeat; background-color: #fafafa; margin-bottom: -7px; border-radius: 5px; background-position: 10px 10px;"></span><code
+            class="hljs"
+            style="overflow-x: auto; padding: 16px; color: #383a42; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #fafafa; border-radius: 5px;"><span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">foreach</span>&nbsp;(<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">var</span>&nbsp;node&nbsp;<span
+            class="hljs-keyword" style="color: #a626a4; line-height: 26px;">in</span>&nbsp;root)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(node.Value);<br>}<br></code></pre>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+                                                                 style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">总结</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;"> </span>
+    </h2>
+    <p data-tool="mdnice编辑器"
+       style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">在 C#
+        9 中，我们可以使用 foreach 扩展来为类添加新的行为。在上面的示例代码中，我们为 TreeNode 类添加了 DepthFirst
+        行为，这样我们就可以直接使用 foreach 循环来遍历树形结构的深度优先遍历结果了。</p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+                                                                 style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">参考资料</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;"> </span>
+    </h2>
+    <ul data-tool="mdnice编辑器"
+        style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+        <li>
+            <section
+                    style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/extension-getenumerator?WT.mc_id=DX-MVP-5003606"
+                   style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Extension
+                    GetEnumerator support for foreach loops</a><a
+                    href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/extension-getenumerator?WT.mc_id=DX-MVP-5003606"
+                    style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">^1</a>
+            </section>
+        </li>
+    </ul>
+    <!-- md Chat-AI-Footer.md -->
+    <ul data-tool="mdnice编辑器"
+        style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+        <li>
+            <section
+                    style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                本文作者： newbe36524
+            </section>
+        </li>
+        <li>
+            <section
+                    style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                本文链接： https://www.newbe.pro/ChatAI/0x013-Extension-foreach-in-csharp-9/
+            </section>
+        </li>
+        <li>
+            <section
+                    style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                版权声明： 本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！
+            </section>
+        </li>
+    </ul>
+</section>

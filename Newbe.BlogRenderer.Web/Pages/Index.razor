@@ -1,0 +1,33 @@
+﻿@page "/"
+@using Markdig
+
+@code {
+    [Inject] private IJSRuntime _js { get; set; }
+    public string MarkdownContent { get; set; } = "please enter some markdown";
+    public string HtmlOut { get; set; }
+
+    private async Task ClickGoButton()
+    {
+        if (!string.IsNullOrWhiteSpace(MarkdownContent))
+        {
+            var builder = new MarkdownPipelineBuilder()
+                .UseYamlFrontMatter()
+                .Use<WeChatStyleExtension>()
+                .UseFootnotes()
+                .UseBootstrap();
+            var pipeline = builder.Build();
+            var html = Markdig.Markdown.ToHtml(MarkdownContent, pipeline);
+            HtmlOut = html;
+            await _js.InvokeVoidAsync("highlightSnippet");
+        }
+    }
+
+}
+
+<PageTitle>Index</PageTitle>
+
+<button @onclick="ClickGoButton">go</button>
+<textarea @bind="MarkdownContent"></textarea>
+<div id="htmlout">
+    @((MarkupString)HtmlOut)
+</div>
