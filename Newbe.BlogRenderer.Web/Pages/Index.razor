@@ -1,33 +1,75 @@
-﻿@page "/"
-@using Markdig
+﻿@using AntDesign
+@page "/"
 
-@code {
-    [Inject] private IJSRuntime _js { get; set; }
-    public string MarkdownContent { get; set; } = "please enter some markdown";
-    public string HtmlOut { get; set; }
+<Row Gutter="16">
+    <Col Span="12">
+        <ButtonGroup>
+            <Button Icon="@IconType.Fill.Wechat" OnClick="args => RenderOut(RenderPlatform.Wechat)">WeChat</Button>
+        </ButtonGroup>
+        <TextArea @bind-Value="MarkdownSource" OnChange="MarkdownSourceChanged" />
+    </Col>
+    <Col Span="12">
+        <Card Bordered="false">
+            <Body>
+            <ButtonGroup>
+                <Button Icon="@IconType.Fill.Wechat" OnClick="args => RenderPreview(RenderPlatform.Wechat)">WeChat</Button>
+            </ButtonGroup>
+            <div id="demoOut">
+                @((MarkupString)HtmlOut)
+            </div>
+            <div id="copyOut" style="display: none">
+                @((MarkupString)CopyOut)
+            </div>
+            </Body>
+        </Card>
+    </Col>
+</Row>
 
-    private async Task ClickGoButton()
+@code{
+    public string MarkdownSource { get; set; } = "please input markdown text";
+    public string HtmlOut { get; set; } = "<div>waiting results</div>";
+    public string CopyOut { get; set; } = "<div>waiting results</div>";
+    private RenderPlatform _lastPlatform = RenderPlatform.Wechat;
+
+    [Inject]
+    public IMdRender MdRender { get; set; }
+
+    [Inject]
+    public IJSRuntime JsRuntime { get; set; }
+
+    private async Task MarkdownSourceChanged(string value)
     {
-        if (!string.IsNullOrWhiteSpace(MarkdownContent))
+        await RenderPreview(_lastPlatform);
+    }
+
+    private async Task RenderPreview(RenderPlatform platform)
+    {
+        _lastPlatform = platform;
+        if (!string.IsNullOrWhiteSpace(MarkdownSource))
         {
-            var builder = new MarkdownPipelineBuilder()
-                .UseYamlFrontMatter()
-                .Use<WeChatStyleExtension>()
-                .UseFootnotes()
-                .UseBootstrap();
-            var pipeline = builder.Build();
-            var html = Markdig.Markdown.ToHtml(MarkdownContent, pipeline);
-            HtmlOut = html;
-            await _js.InvokeVoidAsync("highlightSnippet");
+            var result = await MdRender.Render(platform, MarkdownSource);
+            HtmlOut = result;
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(100);
+                await JsRuntime.InvokeVoidAsync("mdRender", platform.ToString());
+            });
+        }
+    }
+
+    private async Task RenderOut(RenderPlatform platform)
+    {
+        if (!string.IsNullOrWhiteSpace(MarkdownSource))
+        {
+            var result = await MdRender.Render(platform, MarkdownSource);
+            CopyOut = result;
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(100);
+                await JsRuntime.InvokeVoidAsync("mdRender", platform.ToString());
+                await JsRuntime.InvokeVoidAsync("copyOut");
+            });
         }
     }
 
 }
-
-<PageTitle>Index</PageTitle>
-
-<button @onclick="ClickGoButton">go</button>
-<textarea @bind="MarkdownContent"></textarea>
-<div id="htmlout">
-    @((MarkupString)HtmlOut)
-</div>

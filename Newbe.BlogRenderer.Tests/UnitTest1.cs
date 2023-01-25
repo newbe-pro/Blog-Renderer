@@ -1,4 +1,5 @@
 using Markdig;
+using Newbe.BlogRenderer.Providers;
 
 namespace Newbe.BlogRenderer.Tests;
 
