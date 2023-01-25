@@ -4,7 +4,12 @@
 <Row Gutter="16">
     <Col Span="12">
         <ButtonGroup>
-            <Button Icon="@IconType.Fill.Wechat" OnClick="args => RenderOut(RenderPlatform.Wechat)">WeChat</Button>
+            <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderOut(RenderPlatform.Wechat)">WeChat</Button>
+            <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderOut(RenderPlatform.Cnblogs)">Cnblogs</Button>
+            <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderOut(RenderPlatform.Zhihu)">Zhihu</Button>
+            <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderOut(RenderPlatform.TencentCloud)">TencentCloud</Button>
+            <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderOut(RenderPlatform.Toutiao)">Toutiao</Button>
+            <Button Icon="@IconType.Outline.Info" OnClick="args => RenderOut(RenderPlatform.InfoQ)">InfoQ</Button>
         </ButtonGroup>
         <TextArea @bind-Value="MarkdownSource" OnChange="MarkdownSourceChanged" />
     </Col>
@@ -12,7 +17,12 @@
         <Card Bordered="false">
             <Body>
             <ButtonGroup>
-                <Button Icon="@IconType.Fill.Wechat" OnClick="args => RenderPreview(RenderPlatform.Wechat)">WeChat</Button>
+                <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderPreview(RenderPlatform.Wechat)">WeChat</Button>
+                <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderPreview(RenderPlatform.Cnblogs)">Cnblogs</Button>
+                <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderPreview(RenderPlatform.Zhihu)">Zhihu</Button>
+                <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderPreview(RenderPlatform.TencentCloud)">TencentCloud</Button>
+                <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderPreview(RenderPlatform.Toutiao)">Toutiao</Button>
+                <Button Icon="@IconType.Outline.Info" OnClick="args => RenderPreview(RenderPlatform.InfoQ)">InfoQ</Button>
             </ButtonGroup>
             <div id="demoOut">
                 @((MarkupString)HtmlOut)

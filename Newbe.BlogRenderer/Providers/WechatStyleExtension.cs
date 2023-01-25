@@ -6,7 +6,7 @@ using Markdig.Syntax.Inlines;
 
 namespace Newbe.BlogRenderer.Providers;
 
-public class WeChatStyleExtension : IMarkdownExtension
+public class WechatStyleExtension : IMarkdownExtension
 {
     public void Setup(MarkdownPipelineBuilder pipeline)
     {

@@ -1,15 +1,14 @@
 ﻿using Markdig;
+using Markdown.ColorCode;
 
 namespace Newbe.BlogRenderer.Providers;
 
-public class WechatMdRenderProvider : IMdRenderProvider
+public class ZhihuMdRenderProvider : IMdRenderProvider
 {
     public Task<string> RenderAsync(string source)
     {
         var builder = new MarkdownPipelineBuilder()
-            .UseYamlFrontMatter()
-            .Use<WechatStyleExtension>()
-            .UseFootnotes();
+            .UseYamlFrontMatter();
         var pipeline = builder.Build();
         var html = Markdig.Markdown.ToHtml(source, pipeline);
         return Task.FromResult(html);

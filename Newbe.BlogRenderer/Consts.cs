@@ -2,5 +2,5 @@
 
 public static class Consts
 {
-    public const string DataTool = "Newbe.BlogRenderer";
+    public const string DataTool = "mdnewbe";
 }

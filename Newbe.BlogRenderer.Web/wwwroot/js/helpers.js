@@ -45,7 +45,9 @@
 
 window.mdRender = function (platform) {
     console.log("jsRender", platform);
-    hljs.highlightAll();
+    if (platform !== "InfoQ") {
+        hljs.highlightAll();
+    }
 
     switch (platform) {
         case "Wechat":
