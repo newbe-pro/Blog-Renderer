@@ -17,7 +17,7 @@
         <PackageVersion Include="Markdown.ColorCode" Version="1.2.0-preview-2"/>
         <PackageVersion Include="WebStoating.Markdig.Prism" Version="1.0.0"/>
         <PackageVersion Include="Wyam.Highlight" Version="2.2.9"/>
-        <PackageVersion Include="Microsoft.ClearScript" Version="7.3.6"/>
+        <PackageVersion Include="Microsoft.ClearScript" Version="7.3.7"/>
 
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.3.2"/>
         <PackageVersion Include="NUnit" Version="3.13.3"/>
