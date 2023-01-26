@@ -1,0 +1,117 @@
+﻿@using AntDesign
+@page "/"
+
+<Row Gutter="16">
+    <Col Span="12">
+        <Card Bordered="false" Title="Copy output">
+            <Body>
+            <ButtonGroup>
+                <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderOut(RenderPlatform.Wechat)" Color="Color.Green1">WeChat</Button>
+                <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderOut(RenderPlatform.Cnblogs)" Color="Color.Blue1">Cnblogs</Button>
+                <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderOut(RenderPlatform.Zhihu)" Color="Color.Blue2">Zhihu</Button>
+            </ButtonGroup>
+            <ButtonGroup>
+                <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderOut(RenderPlatform.TencentCloud)" Color="Color.Blue3">TencentCloud</Button>
+                <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderOut(RenderPlatform.Toutiao)" Color="Color.Red1">Toutiao</Button>
+                <Button Icon="@IconType.Outline.Info" OnClick="args => RenderOut(RenderPlatform.InfoQ)" Color="Color.Blue4">InfoQ</Button>
+            </ButtonGroup>
+            </Body>
+        </Card>
+        <Card Bordered="false" Title="Markdown source">
+            <Button Icon="@IconType.Fill.Star" OnClick="OnClickCopyMarkdown">Copy Markdown</Button>
+            <TextArea @bind-Value="MarkdownSource" OnChange="MarkdownSourceChanged" Style="height: 500px" Id="markdown_source"></TextArea>
+            <div id="copyOut" style="display: none">
+                @((MarkupString)CopyOut)
+            </div>
+        </Card>
+    </Col>
+    <Col Span="12">
+        <Card Bordered="false" Title="Render preview">
+            <Body>
+            <ButtonGroup>
+                <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderPreview(RenderPlatform.Wechat)" Color="Color.Green1">WeChat</Button>
+                <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderPreview(RenderPlatform.Cnblogs)" Color="Color.Blue1">Cnblogs</Button>
+                <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderPreview(RenderPlatform.Zhihu)" Color="Color.Blue2">Zhihu</Button>
+            </ButtonGroup>
+            <ButtonGroup>
+                <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderPreview(RenderPlatform.TencentCloud)" Color="Color.Blue3">TencentCloud</Button>
+                <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderPreview(RenderPlatform.Toutiao)" Color="Color.Red1">Toutiao</Button>
+                <Button Icon="@IconType.Outline.Info" OnClick="args => RenderPreview(RenderPlatform.InfoQ)" Color="Color.Blue4">InfoQ</Button>
+            </ButtonGroup>
+            </Body>
+        </Card>
+        <Card Bordered="false" Title="@($"Preview {_lastPlatform:G}")">
+            <Body>
+            <Title Copyable>@MarkdownTitle</Title>
+            <div id="preview">
+                @((MarkupString)HtmlOut)
+            </div>
+            </Body>
+        </Card>
+    </Col>
+</Row>
+
+@code{
+    public string MarkdownSource { get; set; } = "please input markdown text";
+    public string HtmlOut { get; set; } = "<div>waiting results</div>";
+    public string? MarkdownTitle { get; set; }
+    public string CopyOut { get; set; } = "<div>waiting results</div>";
+    private RenderPlatform _lastPlatform = RenderPlatform.Wechat;
+
+    [Inject]
+    public IMdRender MdRender { get; set; }
+
+    [Inject]
+    public IMdTitleRetriever MdTitleRetriever { get; set; }
+
+    [Inject]
+    public IJSRuntime JsRuntime { get; set; }
+
+    [Inject]
+    public IMessageService MessageService { get; set; }
+
+    private async Task MarkdownSourceChanged(string value)
+    {
+        await RenderPreview(_lastPlatform);
+    }
+
+    private async Task RenderPreview(RenderPlatform platform)
+    {
+        _lastPlatform = platform;
+        if (!string.IsNullOrWhiteSpace(MarkdownSource))
+        {
+            var result = await MdRender.Render(platform, MarkdownSource);
+            HtmlOut = result;
+            var title = await MdTitleRetriever.GetTitleAsync(MarkdownSource);
+            MarkdownTitle = title;
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(100);
+                await JsRuntime.InvokeVoidAsync("mdRender", platform.ToString(), "#preview");
+            });
+        }
+    }
+
+    private async Task RenderOut(RenderPlatform platform)
+    {
+        await RenderPreview(platform);
+        if (!string.IsNullOrWhiteSpace(MarkdownSource))
+        {
+            var result = await MdRender.Render(platform, MarkdownSource);
+            CopyOut = result;
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(100);
+                await JsRuntime.InvokeVoidAsync("mdRender", platform.ToString(), "#copyOut");
+                await JsRuntime.InvokeVoidAsync("copyOut");
+            });
+            await MessageService.Info($"copy success for {platform:G}");
+        }
+    }
+
+    private async Task OnClickCopyMarkdown(MouseEventArgs obj)
+    {
+        await JsRuntime.InvokeVoidAsync("copyMarkdown");
+    }
+
+}
