@@ -10,7 +10,7 @@ public class TencentCloudMdRenderProvider : IMdRenderProvider
             .UseYamlFrontMatter()
             .UseFootnotes();
         var pipeline = builder.Build();
-        var html = Markdig.Markdown.ToHtml(source, pipeline);
+        var html = Markdown.ToHtml(source, pipeline);
         return Task.FromResult(html);
     }
 }

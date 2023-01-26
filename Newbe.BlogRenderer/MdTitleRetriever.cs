@@ -12,7 +12,7 @@ public class MdTitleRetriever : IMdTitleRetriever
             .UseYamlFrontMatter()
             .UseFootnotes();
         var pipeline = builder.Build();
-        var markdownDocument = Markdig.Markdown.Parse(markdown, pipeline);
+        var markdownDocument = Markdown.Parse(markdown, pipeline);
         foreach (var markdownObject in markdownDocument.Descendants())
         {
             if (markdownObject is YamlFrontMatterBlock block)
