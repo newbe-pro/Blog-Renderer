@@ -10,7 +10,8 @@ public class BlogRendererModule : Module
         base.Load(builder);
         builder.RegisterTypes(
                 typeof(MdRendererFactory),
-                typeof(MdRender))
+                typeof(MdRender),
+                typeof(MdTitleRetriever))
             .AsImplementedInterfaces()
             .InstancePerLifetimeScope();
 

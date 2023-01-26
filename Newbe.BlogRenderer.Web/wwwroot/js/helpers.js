@@ -1,6 +1,6 @@
-﻿const wechatRender = () => {
+﻿const wechatRender = (id) => {
     // set style for pre
-    const pres = document.querySelectorAll("pre");
+    const pres = document.querySelectorAll(id + " pre");
     pres.forEach(function (pre) {
         pre.style = "margin-top: 10px; margin-bottom: 10px; border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;";
         // insert a span into pre
@@ -10,7 +10,7 @@
     });
 
     // set style for pre.code
-    const codePres = document.querySelectorAll("pre code");
+    const codePres = document.querySelectorAll(id + " pre code");
     codePres.forEach(function (codePre) {
         codePre.style = "overflow-x: auto; padding: 16px; color: #383a42; display: -webkit-box; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; font-size: 12px; -webkit-overflow-scrolling: touch; padding-top: 15px; background: #fafafa; border-radius: 5px;";
 
@@ -19,39 +19,42 @@
     });
 
     // set style for class="hljs-keyword" style="color: #a626a4; line-height: 26px;"
-    const keywords = document.querySelectorAll(".hljs-keyword");
+    const keywords = document.querySelectorAll(id + " .hljs-keyword");
     keywords.forEach(function (keyword) {
         keyword.style = "color: #a626a4; line-height: 26px;";
     });
 
     // class="hljs-function" style="line-height: 26px;"
-    const functions = document.querySelectorAll(".hljs-function");
+    const functions = document.querySelectorAll(id + " .hljs-function");
     functions.forEach(function (func) {
         func.style = "line-height: 26px;";
     });
 
     // class="hljs-title" style="color: #4078f2; line-height: 26px;"
-    const titles = document.querySelectorAll(".hljs-title");
+    const titles = document.querySelectorAll(id + " hljs-title");
     titles.forEach(function (title) {
         title.style = "color: #4078f2; line-height: 26px;";
     });
 
     // class="hljs-params" style="line-height: 26px;"
-    const params = document.querySelectorAll(".hljs-params");
+    const params = document.querySelectorAll(id + " .hljs-params");
     params.forEach(function (param) {
         param.style = "line-height: 26px;";
     });
 };
 
-window.mdRender = function (platform) {
-    console.log("jsRender", platform);
+window.mdRender = function (platform, id) {
+    console.log("jsRender", platform, id);
     if (platform !== "InfoQ") {
-        hljs.highlightAll();
+        // highlight id
+        document.querySelectorAll(id + " pre code").forEach((block) => {
+            hljs.highlightBlock(block);
+        });
     }
 
     switch (platform) {
         case "Wechat":
-            wechatRender();
+            wechatRender(id);
             break;
     }
 
@@ -61,5 +64,12 @@ window.copyOut = async function () {
     const content = document.querySelector("#copyOut").innerHTML;
     const blobInput = new Blob([content], {type: 'text/html'});
     const clipboardItemInput = new ClipboardItem({'text/html': blobInput});
+    await navigator.clipboard.write([clipboardItemInput]);
+}
+
+window.copyMarkdown = async function () {
+    const content = document.querySelector("#markdown_source").value;
+    const blobInput = new Blob([content], {type: 'text/plain'});
+    const clipboardItemInput = new ClipboardItem({'text/plain': blobInput});
     await navigator.clipboard.write([clipboardItemInput]);
 }
