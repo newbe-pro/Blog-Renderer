@@ -45,13 +45,10 @@
 
 window.mdRender = function (platform, id) {
     console.log("jsRender", platform, id);
-    if (platform !== "InfoQ") {
-        // highlight id
-        document.querySelectorAll(id + " pre code").forEach((block) => {
-            hljs.highlightBlock(block);
-        });
-    }
-
+    // highlight id
+    document.querySelectorAll(id + " pre code").forEach((block) => {
+        hljs.highlightBlock(block);
+    });
     switch (platform) {
         case "Wechat":
             wechatRender(id);
@@ -60,10 +57,20 @@ window.mdRender = function (platform, id) {
 
 }
 
-window.copyOut = async function () {
-    const content = document.querySelector("#copyOut").innerHTML;
-    const blobInput = new Blob([content], {type: 'text/html'});
-    const clipboardItemInput = new ClipboardItem({'text/html': blobInput});
+window.copyOut = async function (platform, content) {
+    console.info("copyOut", platform);
+    let copyMimeType = 'text/html';
+    let contentToCopy = document.querySelector("#copyOut").innerHTML;
+    const planTextPlatforms = ["InfoQ", "TencentCloud", "Bilibili"];
+    if (planTextPlatforms.includes(platform)) {
+        // for plain text, it should come from C# since there is some html tag in the content.
+        // it is not a good idea to use innerHTML to get the content.
+        copyMimeType = 'text/plain';
+        contentToCopy = content;
+    }
+    console.info("copyOut", copyMimeType, contentToCopy);
+    const blobInput = new Blob([contentToCopy], {type: copyMimeType});
+    const clipboardItemInput = new ClipboardItem({[copyMimeType]: blobInput});
     await navigator.clipboard.write([clipboardItemInput]);
 }
 

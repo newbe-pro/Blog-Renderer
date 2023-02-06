@@ -15,9 +15,6 @@
     <ItemGroup>
         <PackageVersion Include="Markdig" Version="0.30.4"/>
         <PackageVersion Include="Markdown.ColorCode" Version="1.2.0-preview-2"/>
-        <PackageVersion Include="WebStoating.Markdig.Prism" Version="1.0.0"/>
-        <PackageVersion Include="Wyam.Highlight" Version="2.2.9"/>
-        <PackageVersion Include="Microsoft.ClearScript" Version="7.3.6"/>
 
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.4.1"/>
         <PackageVersion Include="NUnit" Version="3.13.3"/>
@@ -25,7 +22,6 @@
         <PackageVersion Include="NUnit.Analyzers" Version="3.5.0"/>
         <PackageVersion Include="coverlet.collector" Version="3.2.0"/>
         <PackageVersion Include="Autofac.Extras.Moq" Version="6.1.0" />
-        
 
         <PackageVersion Include="coverlet.collector" Version="3.2.0"/>
         <PackageVersion Include="Verify.NUnit" Version="19.9.1"/>

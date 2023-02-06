@@ -11,7 +11,8 @@ public class BlogRendererModule : Module
         builder.RegisterTypes(
                 typeof(MdRendererFactory),
                 typeof(MdRender),
-                typeof(MdTitleRetriever))
+                typeof(PreRender),
+                typeof(YamlFrontMatterRetriever))
             .AsImplementedInterfaces()
             .InstancePerLifetimeScope();
 
@@ -21,6 +22,7 @@ public class BlogRendererModule : Module
         builder.RegisterModule<TencentCloudModule>();
         builder.RegisterModule<ToutiaoModule>();
         builder.RegisterModule<InfoQModule>();
+        builder.RegisterModule<BilibiliQModule>();
     }
 }
 
@@ -83,3 +85,14 @@ public class InfoQModule : Module
             .Keyed<IMdRenderProvider>(RenderPlatform.InfoQ);
     }
 }
+
+public class BilibiliQModule : Module
+{
+    protected override void Load(ContainerBuilder builder)
+    {
+        base.Load(builder);
+        builder.RegisterType<BilibiliMdRenderProvider>()
+            .Keyed<IMdRenderProvider>(RenderPlatform.Bilibili);
+    }
+}
+

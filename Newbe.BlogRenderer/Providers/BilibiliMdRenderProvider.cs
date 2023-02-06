@@ -1,8 +1,6 @@
-﻿using Markdig;
+﻿namespace Newbe.BlogRenderer.Providers;
 
-namespace Newbe.BlogRenderer.Providers;
-
-public class TencentCloudMdRenderProvider : IMdRenderProvider
+public class BilibiliMdRenderProvider : IMdRenderProvider
 {
     public Task<string> RenderAsync(string source)
     {

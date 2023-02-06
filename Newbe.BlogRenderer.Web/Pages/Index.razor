@@ -6,43 +6,89 @@
         <Card Bordered="false" Title="Copy output">
             <Body>
             <ButtonGroup>
-                <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderOut(RenderPlatform.Wechat)" Color="Color.Green1">WeChat</Button>
-                <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderOut(RenderPlatform.Cnblogs)" Color="Color.Blue1">Cnblogs</Button>
-                <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderOut(RenderPlatform.Zhihu)" Color="Color.Blue2">Zhihu</Button>
-            </ButtonGroup>
-            <ButtonGroup>
-                <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderOut(RenderPlatform.TencentCloud)" Color="Color.Blue3">TencentCloud</Button>
-                <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderOut(RenderPlatform.Toutiao)" Color="Color.Red1">Toutiao</Button>
-                <Button Icon="@IconType.Outline.Info" OnClick="args => RenderOut(RenderPlatform.InfoQ)" Color="Color.Blue4">InfoQ</Button>
+                <Tooltip Title="微信">
+                    <Button Id="btnRenderOutWechat" Icon="@IconType.Outline.Wechat" OnClick="args => RenderOut(RenderPlatform.Wechat)" Color="Color.Green1">微</Button>
+                </Tooltip>
+                <Tooltip Title="博客园">
+                    <Button Id="btnRenderOutCnblogs" Icon="@IconType.Outline.Robot" OnClick="args => RenderOut(RenderPlatform.Cnblogs)" Color="Color.Blue1">博</Button>
+                </Tooltip>
+                <Tooltip Title="知乎">
+                    <Button Id="btnRenderOutZhihu" Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderOut(RenderPlatform.Zhihu)" Color="Color.Blue2">知</Button>
+                </Tooltip>
+                <Tooltip Title="腾讯云">
+                    <Button Id="btnRenderOutTencent" Icon="@IconType.Outline.Qq" OnClick="args => RenderOut(RenderPlatform.TencentCloud)" Color="Color.Blue3">腾</Button>
+                </Tooltip>
+                <Tooltip Title="今日头条">
+                    <Button Id="btnRenderOutToutiao" Icon="@IconType.Outline.Fire" OnClick="args => RenderOut(RenderPlatform.Toutiao)" Color="Color.Red1">头</Button>
+                </Tooltip>
+                <Tooltip Title="InfoQ">
+                    <Button Id="btnRenderOutInfoQ" Icon="@IconType.Outline.Info" OnClick="args => RenderOut(RenderPlatform.InfoQ)" Color="Color.Blue4">因</Button>
+                </Tooltip>
+                <Tooltip Title="Bilibili">
+                    <Button Id="btnRenderOutBilibili" Icon="@IconType.Outline.Rocket" OnClick="args => RenderOut(RenderPlatform.Bilibili)" Color="Color.Blue5">哔</Button>
+                </Tooltip>
             </ButtonGroup>
             </Body>
         </Card>
         <Card Bordered="false" Title="Markdown source">
-            <Button Icon="@IconType.Fill.Star" OnClick="OnClickCopyMarkdown">Copy Markdown</Button>
+            <Button Icon="@IconType.Fill.Star" Id="btnCopySource" OnClick="OnClickCopyMarkdown">Copy Markdown</Button>
             <TextArea @bind-Value="MarkdownSource" OnChange="MarkdownSourceChanged" Style="height: 500px" Id="markdown_source"></TextArea>
             <div id="copyOut" style="display: none">
                 @((MarkupString)CopyOut)
             </div>
+        </Card>
+        <Card Bordered="false" Title="Copyright Template">
+            <TextArea @bind-Value="CopyrightTemplate" Style="height: 200px" Id="copyright_template"></TextArea>
+        </Card>
+        <Card Bordered="false" Title="Ending Template">
+            <TextArea @bind-Value="EndingTemplate" Style="height: 200px" Id="ending_template"></TextArea>
         </Card>
     </Col>
     <Col Span="12">
         <Card Bordered="false" Title="Render preview">
             <Body>
             <ButtonGroup>
-                <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderPreview(RenderPlatform.Wechat)" Color="Color.Green1">WeChat</Button>
-                <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderPreview(RenderPlatform.Cnblogs)" Color="Color.Blue1">Cnblogs</Button>
-                <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderPreview(RenderPlatform.Zhihu)" Color="Color.Blue2">Zhihu</Button>
-            </ButtonGroup>
-            <ButtonGroup>
-                <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderPreview(RenderPlatform.TencentCloud)" Color="Color.Blue3">TencentCloud</Button>
-                <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderPreview(RenderPlatform.Toutiao)" Color="Color.Red1">Toutiao</Button>
-                <Button Icon="@IconType.Outline.Info" OnClick="args => RenderPreview(RenderPlatform.InfoQ)" Color="Color.Blue4">InfoQ</Button>
+                <Tooltip Title="微信">
+                    <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderPreview(RenderPlatform.Wechat)" Color="Color.Green1">微</Button>
+                </Tooltip>
+                <Tooltip Title="博客园">
+                    <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderPreview(RenderPlatform.Cnblogs)" Color="Color.Blue1">博</Button>
+                </Tooltip>
+                <Tooltip Title="知乎">
+                    <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderPreview(RenderPlatform.Zhihu)" Color="Color.Blue2">知</Button>
+                </Tooltip>
+                <Tooltip Title="腾讯云">
+                    <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderPreview(RenderPlatform.TencentCloud)" Color="Color.Blue3">腾</Button>
+                </Tooltip>
+                <Tooltip Title="今日头条">
+                    <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderPreview(RenderPlatform.Toutiao)" Color="Color.Red1">头</Button>
+                </Tooltip>
+                <Tooltip Title="InfoQ">
+                    <Button Icon="@IconType.Outline.Info" OnClick="args => RenderPreview(RenderPlatform.InfoQ)" Color="Color.Blue4">因</Button>
+                </Tooltip>
+                <Tooltip Title="Bilibili">
+                    <Button Icon="@IconType.Outline.Rocket" OnClick="args => RenderPreview(RenderPlatform.Bilibili)" Color="Color.Blue5">哔</Button>
+                </Tooltip>
             </ButtonGroup>
             </Body>
         </Card>
         <Card Bordered="false" Title="@($"Preview {_lastPlatform:G}")">
             <Body>
-            <Title Copyable>@MarkdownTitle</Title>
+            <Descriptions Title="Yaml Front">
+                <DescriptionsItem Title="Title">
+                    <Input Id="txtTitle" Value="@YamlFront.Title"/>
+                </DescriptionsItem>
+                <DescriptionsItem Title="Cover">
+                    <Input Id="txtCover" Value="@YamlFront.Cover"/>
+                </DescriptionsItem>
+                <DescriptionsItem Title="Slag">
+                    <Input Id="txtSlag" Value="@YamlFront.Slag"/>
+                </DescriptionsItem>
+                <DescriptionsItem Title="Summary">
+                    <Input Id="txtSummary" Value="@YamlFront.Summary"/>
+                </DescriptionsItem>
+            </Descriptions>
+            <Divider/>
             <div id="preview">
                 @((MarkupString)HtmlOut)
             </div>
@@ -52,17 +98,25 @@
 </Row>
 
 @code{
-    public string MarkdownSource { get; set; } = "please input markdown text";
+    public string MarkdownSource { get; set; } = "";
     public string HtmlOut { get; set; } = "<div>waiting results</div>";
-    public string? MarkdownTitle { get; set; }
+    public YamlFront YamlFront { get; set; } = new();
     public string CopyOut { get; set; } = "<div>waiting results</div>";
+
+    public string CopyrightTemplate { get; set; } = $@"
+- 本文作者： newbe36524
+- 本文链接： https://www.newbe.pro/Others/%slag%/
+- 版权声明： 本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！";
+
+    public string EndingTemplate { get; set; } = $@"**感谢您的阅读，如果您觉得本文有用，请点赞、关注和转发；更多精彩内容请关注我的博客 <https://www.newbe.pro> 和 <https://github.com/newbe36524/newbe36524>。**";
+
     private RenderPlatform _lastPlatform = RenderPlatform.Wechat;
 
     [Inject]
     public IMdRender MdRender { get; set; }
 
     [Inject]
-    public IMdTitleRetriever MdTitleRetriever { get; set; }
+    public IYamlFrontMatterRetriever YamlFrontMatterRetriever { get; set; }
 
     [Inject]
     public IJSRuntime JsRuntime { get; set; }
@@ -80,10 +134,13 @@
         _lastPlatform = platform;
         if (!string.IsNullOrWhiteSpace(MarkdownSource))
         {
-            var result = await MdRender.Render(platform, MarkdownSource);
+            var result = await MdRender.Render(new MdRenderOptions(platform, MarkdownSource)
+            {
+                CopyrightTemplate = CopyrightTemplate,
+                EndingTemplate = EndingTemplate
+            });
             HtmlOut = result;
-            var title = await MdTitleRetriever.GetTitleAsync(MarkdownSource);
-            MarkdownTitle = title;
+            YamlFront = await YamlFrontMatterRetriever.GetYamlFrontAsync(MarkdownSource);
             _ = Task.Run(async () =>
             {
                 await Task.Delay(100);
@@ -97,13 +154,17 @@
         await RenderPreview(platform);
         if (!string.IsNullOrWhiteSpace(MarkdownSource))
         {
-            var result = await MdRender.Render(platform, MarkdownSource);
+            var result = await MdRender.Render(new MdRenderOptions(platform, MarkdownSource)
+            {
+                CopyrightTemplate = CopyrightTemplate,
+                EndingTemplate = EndingTemplate
+            });
             CopyOut = result;
             _ = Task.Run(async () =>
             {
                 await Task.Delay(100);
                 await JsRuntime.InvokeVoidAsync("mdRender", platform.ToString(), "#copyOut");
-                await JsRuntime.InvokeVoidAsync("copyOut");
+                await JsRuntime.InvokeVoidAsync("copyOut", platform.ToString(), result);
             });
             await MessageService.Info($"copy success for {platform:G}");
         }
