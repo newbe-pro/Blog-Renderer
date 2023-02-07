@@ -1,33 +1,52 @@
 ﻿@using AntDesign
 @page "/"
-
+@{
+    var options = new[]
+    {
+        new PlatformUiOption(RenderPlatform.Wechat, "微", Color.Green1, IconType.Outline.Wechat,
+            "微信"),
+        new PlatformUiOption(RenderPlatform.Cnblogs, "博", Color.Green2, IconType.Outline.Robot, "博客园"),
+        new PlatformUiOption(RenderPlatform.Zhihu, "知", Color.Green3, IconType.Fill.ZhihuCircle, "知乎"),
+        new PlatformUiOption(RenderPlatform.TencentCloud, "腾", Color.Green4, IconType.Outline.Qq, "腾讯云"),
+        new PlatformUiOption(RenderPlatform.Toutiao, "头", Color.Green5, IconType.Outline.Fire, "今日头条"),
+        new PlatformUiOption(RenderPlatform.InfoQ, "因", Color.Green6, IconType.Outline.Info, "InfoQ"),
+        new PlatformUiOption(RenderPlatform.Bilibili, "哔", Color.Green7, IconType.Outline.Rocket, "Bilibili"),
+        new PlatformUiOption(RenderPlatform.Juejin, "金", Color.Green8, IconType.Outline.Block, "掘金"),
+        new PlatformUiOption(RenderPlatform.Csdn, "钱", Color.Green9, IconType.Outline.Monitor, "CSDN"),
+        new PlatformUiOption(RenderPlatform.Aliyun, "里", Color.Green10, IconType.Outline.Cloud, "阿里云"),
+        new PlatformUiOption(RenderPlatform.Sifou, "思", Color.Blue1, IconType.Outline.Table, "思否"),
+    };
+    // group options into 5 buttons per row
+    var optionGroups = options
+        .Select((option, index) => new { option, index })
+        .GroupBy(x => x.index / 5)
+        .Select(x => x.Select(y => y.option).ToArray())
+        .ToArray();
+}
 <Row Gutter="16">
     <Col Span="12">
         <Card Bordered="false" Title="Copy output">
             <Body>
-            <ButtonGroup>
-                <Tooltip Title="微信">
-                    <Button Id="btnRenderOutWechat" Icon="@IconType.Outline.Wechat" OnClick="args => RenderOut(RenderPlatform.Wechat)" Color="Color.Green1">微</Button>
-                </Tooltip>
-                <Tooltip Title="博客园">
-                    <Button Id="btnRenderOutCnblogs" Icon="@IconType.Outline.Robot" OnClick="args => RenderOut(RenderPlatform.Cnblogs)" Color="Color.Blue1">博</Button>
-                </Tooltip>
-                <Tooltip Title="知乎">
-                    <Button Id="btnRenderOutZhihu" Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderOut(RenderPlatform.Zhihu)" Color="Color.Blue2">知</Button>
-                </Tooltip>
-                <Tooltip Title="腾讯云">
-                    <Button Id="btnRenderOutTencent" Icon="@IconType.Outline.Qq" OnClick="args => RenderOut(RenderPlatform.TencentCloud)" Color="Color.Blue3">腾</Button>
-                </Tooltip>
-                <Tooltip Title="今日头条">
-                    <Button Id="btnRenderOutToutiao" Icon="@IconType.Outline.Fire" OnClick="args => RenderOut(RenderPlatform.Toutiao)" Color="Color.Red1">头</Button>
-                </Tooltip>
-                <Tooltip Title="InfoQ">
-                    <Button Id="btnRenderOutInfoQ" Icon="@IconType.Outline.Info" OnClick="args => RenderOut(RenderPlatform.InfoQ)" Color="Color.Blue4">因</Button>
-                </Tooltip>
-                <Tooltip Title="Bilibili">
-                    <Button Id="btnRenderOutBilibili" Icon="@IconType.Outline.Rocket" OnClick="args => RenderOut(RenderPlatform.Bilibili)" Color="Color.Blue5">哔</Button>
-                </Tooltip>
-            </ButtonGroup>
+            @{
+                foreach (var group in optionGroups)
+                {
+                    <Space>
+                        @foreach (var option in group)
+                        {
+                            <SpaceItem>
+                                <Tooltip Title="@option.FullName">
+                                    <Button Id="@($"btnRenderOut{option.Platform:G}")"
+                                            Icon="@option.Icon"
+                                            OnClick="args => RenderOut(option.Platform)"
+                                            Color="@option.Color">
+                                        @option.Name
+                                    </Button>
+                                </Tooltip>
+                            </SpaceItem>
+                        }
+                    </Space>
+                }
+            }
             </Body>
         </Card>
         <Card Bordered="false" Title="Markdown source">
@@ -47,29 +66,26 @@
     <Col Span="12">
         <Card Bordered="false" Title="Render preview">
             <Body>
-            <ButtonGroup>
-                <Tooltip Title="微信">
-                    <Button Icon="@IconType.Outline.Wechat" OnClick="args => RenderPreview(RenderPlatform.Wechat)" Color="Color.Green1">微</Button>
-                </Tooltip>
-                <Tooltip Title="博客园">
-                    <Button Icon="@IconType.Outline.Robot" OnClick="args => RenderPreview(RenderPlatform.Cnblogs)" Color="Color.Blue1">博</Button>
-                </Tooltip>
-                <Tooltip Title="知乎">
-                    <Button Icon="@IconType.Fill.ZhihuCircle" OnClick="args => RenderPreview(RenderPlatform.Zhihu)" Color="Color.Blue2">知</Button>
-                </Tooltip>
-                <Tooltip Title="腾讯云">
-                    <Button Icon="@IconType.Outline.Qq" OnClick="args => RenderPreview(RenderPlatform.TencentCloud)" Color="Color.Blue3">腾</Button>
-                </Tooltip>
-                <Tooltip Title="今日头条">
-                    <Button Icon="@IconType.Outline.Fire" OnClick="args => RenderPreview(RenderPlatform.Toutiao)" Color="Color.Red1">头</Button>
-                </Tooltip>
-                <Tooltip Title="InfoQ">
-                    <Button Icon="@IconType.Outline.Info" OnClick="args => RenderPreview(RenderPlatform.InfoQ)" Color="Color.Blue4">因</Button>
-                </Tooltip>
-                <Tooltip Title="Bilibili">
-                    <Button Icon="@IconType.Outline.Rocket" OnClick="args => RenderPreview(RenderPlatform.Bilibili)" Color="Color.Blue5">哔</Button>
-                </Tooltip>
-            </ButtonGroup>
+            @{
+                foreach (var group in optionGroups)
+                {
+                    <Space>
+                        @foreach (var option in group)
+                        {
+                            <SpaceItem>
+                                <Tooltip Title="@option.FullName">
+                                    <Button Id="@($"btnRenderPreview{option.Platform:G}")"
+                                            Icon="@option.Icon"
+                                            OnClick="args => RenderPreview(option.Platform)"
+                                            Color="@option.Color">
+                                        @option.Name
+                                    </Button>
+                                </Tooltip>
+                            </SpaceItem>
+                        }
+                    </Space>
+                }
+            }
             </Body>
         </Card>
         <Card Bordered="false" Title="@($"Preview {_lastPlatform:G}")">
@@ -104,8 +120,8 @@
     public string CopyOut { get; set; } = "<div>waiting results</div>";
 
     public string CopyrightTemplate { get; set; } = $@"
-- 本文作者： newbe36524
-- 本文链接： https://www.newbe.pro/Others/%slag%/
+- 本文作者： [newbe36524](https://www.newbe.pro)
+- 本文链接： [https://www.newbe.pro/Others/%slag%/](https://www.newbe.pro/Others/%slag%/)
 - 版权声明： 本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！";
 
     public string EndingTemplate { get; set; } = $@"**感谢您的阅读，如果您觉得本文有用，请点赞、关注和转发；更多精彩内容请关注我的博客 <https://www.newbe.pro> 和 <https://github.com/newbe36524/newbe36524>。**";

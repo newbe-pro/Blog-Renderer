@@ -22,11 +22,15 @@ public class BlogRendererModule : Module
         builder.RegisterModule<TencentCloudModule>();
         builder.RegisterModule<ToutiaoModule>();
         builder.RegisterModule<InfoQModule>();
-        builder.RegisterModule<BilibiliQModule>();
+        builder.RegisterModule<BilibiliModule>();
+        builder.RegisterModule<JuejinModule>();
+        builder.RegisterModule<CsdnModule>();
+        builder.RegisterModule<AliyunModule>();
+        builder.RegisterModule<SifouModule>();
     }
 }
 
-public class WechatModule : Module
+public sealed class WechatModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -36,7 +40,7 @@ public class WechatModule : Module
     }
 }
 
-public class CnblogsModule : Module
+public sealed class CnblogsModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -46,7 +50,7 @@ public class CnblogsModule : Module
     }
 }
 
-public class ZhihuModule : Module
+public sealed class ZhihuModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -56,7 +60,7 @@ public class ZhihuModule : Module
     }
 }
 
-public class TencentCloudModule : Module
+public sealed class TencentCloudModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -66,7 +70,7 @@ public class TencentCloudModule : Module
     }
 }
 
-public class ToutiaoModule : Module
+public sealed class ToutiaoModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -76,7 +80,7 @@ public class ToutiaoModule : Module
     }
 }
 
-public class InfoQModule : Module
+public sealed class InfoQModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -86,7 +90,7 @@ public class InfoQModule : Module
     }
 }
 
-public class BilibiliQModule : Module
+public sealed class BilibiliModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
@@ -96,3 +100,42 @@ public class BilibiliQModule : Module
     }
 }
 
+public sealed class JuejinModule : Module
+{
+    protected override void Load(ContainerBuilder builder)
+    {
+        base.Load(builder);
+        builder.RegisterType<JuejinMdRenderProvider>()
+            .Keyed<IMdRenderProvider>(RenderPlatform.Juejin);
+    }
+}
+
+public sealed class CsdnModule : Module
+{
+    protected override void Load(ContainerBuilder builder)
+    {
+        base.Load(builder);
+        builder.RegisterType<CsdnMdRenderProvider>()
+            .Keyed<IMdRenderProvider>(RenderPlatform.Csdn);
+    }
+}
+
+public sealed class AliyunModule : Module
+{
+    protected override void Load(ContainerBuilder builder)
+    {
+        base.Load(builder);
+        builder.RegisterType<AliyunMdRenderProvider>()
+            .Keyed<IMdRenderProvider>(RenderPlatform.Aliyun);
+    }
+}
+
+public sealed class SifouModule : Module
+{
+    protected override void Load(ContainerBuilder builder)
+    {
+        base.Load(builder);
+        builder.RegisterType<SifouMdRenderProvider>()
+            .Keyed<IMdRenderProvider>(RenderPlatform.Sifou);
+    }
+}

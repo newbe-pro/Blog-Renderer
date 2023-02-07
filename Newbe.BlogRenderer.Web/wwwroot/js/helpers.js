@@ -61,7 +61,7 @@ window.copyOut = async function (platform, content) {
     console.info("copyOut", platform);
     let copyMimeType = 'text/html';
     let contentToCopy = document.querySelector("#copyOut").innerHTML;
-    const planTextPlatforms = ["InfoQ", "TencentCloud", "Bilibili"];
+    const planTextPlatforms = ["InfoQ", "TencentCloud", "Bilibili", "Csdn", "Sifou"];
     if (planTextPlatforms.includes(platform)) {
         // for plain text, it should come from C# since there is some html tag in the content.
         // it is not a good idea to use innerHTML to get the content.
