@@ -1,5 +1,4 @@
 ﻿using Markdig;
-using Markdown.ColorCode;
 
 namespace Newbe.BlogRenderer.Providers;
 
@@ -10,7 +9,7 @@ public class ZhihuMdRenderProvider : IMdRenderProvider
         var builder = new MarkdownPipelineBuilder()
             .UseYamlFrontMatter();
         var pipeline = builder.Build();
-        var html = Markdig.Markdown.ToHtml(source, pipeline);
+        var html = Markdown.ToHtml(source, pipeline);
         return Task.FromResult(html);
     }
 }
