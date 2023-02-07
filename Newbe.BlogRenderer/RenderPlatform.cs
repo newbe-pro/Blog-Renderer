@@ -9,4 +9,8 @@ public enum RenderPlatform
     Toutiao,
     InfoQ,
     Bilibili,
+    Juejin,
+    Csdn,
+    Aliyun,
+    Sifou,
 }
