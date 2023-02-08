@@ -8,6 +8,7 @@ public class CnblogsMdRenderProvider : IMdRenderProvider
     {
         var builder = new MarkdownPipelineBuilder()
             .UseYamlFrontMatter()
+            .UsePipeTables()
             .UseFootnotes();
         var pipeline = builder.Build();
         var html = Markdown.ToHtml(source, pipeline);
