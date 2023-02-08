@@ -17,7 +17,6 @@ internal sealed class PreRender : IPreRender
 
         result = result.Replace(Consts.PlaceHolders.Markdown.ChatGPT, string.Empty);
         result = result.Replace(Consts.PlaceHolders.Markdown.More, string.Empty);
-        result = result.Replace(Consts.PlaceHolders.Markdown.YamlFrontMatter, string.Empty);
 
         if (!string.IsNullOrWhiteSpace(yamlFront.Slag) && !string.IsNullOrWhiteSpace(options.CopyrightTemplate))
         {
