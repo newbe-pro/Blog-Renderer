@@ -13,6 +13,7 @@ public static class Consts
             public const string More = "<!-- more -->";
             public const string Ending = "<!-- ending -->";
             public const string YamlFrontMatter = "<!-- YamlFrontMatter -->";
+            public const string Ad = "<!-- ad -->";
         }
 
         public static class Mic

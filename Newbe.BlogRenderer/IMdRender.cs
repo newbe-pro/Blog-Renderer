@@ -9,4 +9,5 @@ public record MdRenderOptions(RenderPlatform Platform, string Markdown)
 {
     public string CopyrightTemplate { get; set; } = null!;
     public string EndingTemplate { get; set; } = null!;
+    public string AdTemplate { get; set; } = null!;
 }

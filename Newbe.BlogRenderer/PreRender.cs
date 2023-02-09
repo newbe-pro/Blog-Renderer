@@ -29,6 +29,11 @@ internal sealed class PreRender : IPreRender
             result = result.Replace(Consts.PlaceHolders.Markdown.Ending, options.EndingTemplate);
         }
 
+        if (!string.IsNullOrWhiteSpace(options.AdTemplate))
+        {
+            result = result.Replace(Consts.PlaceHolders.Markdown.Ad, options.AdTemplate);
+        }
+
         return result;
     }
 }
