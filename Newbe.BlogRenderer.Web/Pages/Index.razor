@@ -1,4 +1,5 @@
 ﻿@using AntDesign
+@using System.Text.Json
 @page "/"
 @{
     var options = new[]
@@ -51,6 +52,7 @@
         </Card>
         <Card Bordered="false" Title="Markdown source">
             <Button Icon="@IconType.Fill.Star" Id="btnCopySource" OnClick="OnClickCopyMarkdown">Copy Markdown</Button>
+            <Button Icon="@IconType.Fill.Star" Id="btcSetTextMarkdown" OnClick="OnClickSetMarkdown">Populate test data</Button>
             <TextArea @bind-Value="MarkdownSource" OnChange="MarkdownSourceChanged" Style="height: 500px" Id="markdown_source"></TextArea>
             <div id="copyOut" style="display: none">
                 @((MarkupString)CopyOut)
@@ -106,6 +108,9 @@
                 <DescriptionsItem Title="Summary">
                     <Input Id="txtSummary" Value="@YamlFront.Summary"/>
                 </DescriptionsItem>
+                <DescriptionsItem Title="Tags">
+                    <Input Id="txtTags" Value="@YamlFront.Tags"/>
+                </DescriptionsItem>
             </Descriptions>
             <Divider/>
             <div id="preview">
@@ -122,13 +127,10 @@
     public YamlFront YamlFront { get; set; } = new();
     public string CopyOut { get; set; } = "<div>waiting results</div>";
 
-    public string CopyrightTemplate { get; set; } = $@"
-- 本文作者： [newbe36524](https://www.newbe.pro)
-- 本文链接： [https://www.newbe.pro/Others/%slag%/](https://www.newbe.pro/Others/%slag%/)
-- 版权声明： 本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！";
+    public string CopyrightTemplate { get; set; } = PreDefinedContent.CopyrightTemplate;
 
-    public string EndingTemplate { get; set; } = $@"**感谢您的阅读，如果您觉得本文有用，请点赞、关注和转发。最近我们正在组织全新的技术交流方式，欢迎点击链接莅临指导 <https://www.newbe.pro/links/>**";
-    public string AdTemplate { get; set; } = $@"> **最近我们正在组织全新的技术交流方式，欢迎点击链接莅临指导 <https://www.newbe.pro/links/>**";
+    public string EndingTemplate { get; set; } = PreDefinedContent.EndingTemplate;
+    public string AdTemplate { get; set; } = PreDefinedContent.AdTemplate;
 
     private RenderPlatform _lastPlatform = RenderPlatform.Wechat;
 
@@ -195,6 +197,12 @@
     private async Task OnClickCopyMarkdown(MouseEventArgs obj)
     {
         await JsRuntime.InvokeVoidAsync("copyMarkdown");
+    }
+
+    private Task OnClickSetMarkdown(MouseEventArgs obj)
+    {
+        MarkdownSource = PreDefinedContent.TestMarkdown;
+        return Task.CompletedTask;
     }
 
 }

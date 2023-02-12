@@ -11,4 +11,5 @@ public record YamlFront
     public string Summary { get; set; } = "not found";
     public string Cover { get; set; } = "not found";
     public string Slag { get; set; } = "not found";
+    public string Tags { get; set; } = "not found";
 }

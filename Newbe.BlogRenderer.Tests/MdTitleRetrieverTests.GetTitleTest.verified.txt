@@ -2,5 +2,6 @@
   Title: 在 C# 9 中使用 foreach 扩展,
   Summary: 在 C# 9 中，foreach 循环可以使用扩展方法。在本文中，我们将通过例子回顾 C# 9 中如何扩展 foreach 循环。,
   Cover: /images/newbe_cover (Small).png,
-  Slag: 0x013-Extension-foreach-in-csharp-9
+  Slag: 0x013-Extension-foreach-in-csharp-9,
+  Tags: dotnet, chatOpenAI, C#
 }

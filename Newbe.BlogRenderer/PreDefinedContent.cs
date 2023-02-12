@@ -1,5 +1,19 @@
----
-date: 2023-01-01
+﻿namespace Newbe.BlogRenderer;
+
+public static class PreDefinedContent
+{
+    public const string CopyrightTemplate = @"
+- 本文作者： [newbe36524](https://www.newbe.pro)
+- 本文链接： [https://www.newbe.pro/Others/%slag%/](https://www.newbe.pro/Others/%slag%/)
+- 版权声明： 本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！";
+
+    public const string EndingTemplate =
+        @"**感谢您的阅读，如果您觉得本文有用，请点赞、关注和转发。**";
+
+    public const string AdTemplate = @"> **可发帖可群聊的技术交流方式已近上线，欢迎通过链接，加入我们一起讨论。 <https://www.newbe.pro/links/>**";
+
+    public const string TestMarkdown = @"---
+                                         date: 2023-01-01
 title: 在 C# 9 中使用 foreach 扩展
 tags: [dotnet, chatOpenAI, C#]
 
@@ -69,8 +83,6 @@ namespace Example
 }
 ```
 
-<!-- ad -->
-
 在这个示例代码中，我们在 TreeNode 类中定义了一个值属性和一个存储子节点的列表属性。我们还在 TreeExtensions 类中定义了一个 DepthFirst 扩展方法，该方法使用 yield return 语句来返回树形结构的深度优先遍历结果。
 
 在 Main 方法中，我们创建了一个树形结构，然后使用 foreach 循环来遍历树形结构的深度优先遍历结果。
@@ -125,8 +137,8 @@ foreach (var node in root)
 
 <!-- md Chat-AI-Footer.md -->
 
-<!-- ad -->
-
 <!-- ending -->
 
 <!-- copyright-->
+";
+}

@@ -37,6 +37,11 @@ public class YamlFrontMatterRetriever : IYamlFrontMatterRetriever
                     {
                         yamlFront.Slag = s.Replace("slag:", "").Trim();
                     }
+                    else if (s.Contains("tags:"))
+                    {
+                        yamlFront.Tags = s.Replace("tags:", "")
+                            .Trim('[', ']', ' ');
+                    }
                 }
             }
         }
