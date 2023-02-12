@@ -10,7 +10,7 @@ public static class PreDefinedContent
     public const string EndingTemplate =
         @"**感谢您的阅读，如果您觉得本文有用，请点赞、关注和转发。**";
 
-    public const string AdTemplate = @"> **可发帖可群聊的技术交流方式已近上线，欢迎通过链接，加入我们一起讨论。 <https://www.newbe.pro/links/>**";
+    public const string AdTemplate = @"> **可发帖可群聊的技术交流方式已经上线，欢迎通过链接，加入我们一起讨论。 <https://www.newbe.pro/links/>**";
 
     public const string TestMarkdown = @"---
                                          date: 2023-01-01
