@@ -18,6 +18,18 @@ internal sealed class PreRender : IPreRender
         result = result.Replace(Consts.PlaceHolders.Markdown.ChatGPT, string.Empty);
         result = result.Replace(Consts.PlaceHolders.Markdown.More, string.Empty);
 
+        // remove heading numbers like ¹²³⁴⁵
+        result = result.Replace("¹", string.Empty);
+        result = result.Replace("²", string.Empty);
+        result = result.Replace("³", string.Empty);
+        result = result.Replace("⁴", string.Empty);
+        result = result.Replace("⁵", string.Empty);
+        result = result.Replace("⁶", string.Empty);
+        result = result.Replace("⁷", string.Empty);
+        result = result.Replace("⁸", string.Empty);
+        result = result.Replace("⁹", string.Empty);
+        result = result.Replace("⁰", string.Empty);
+
         if (!string.IsNullOrWhiteSpace(yamlFront.Slag) && !string.IsNullOrWhiteSpace(options.CopyrightTemplate))
         {
             result = result.Replace(Consts.PlaceHolders.Markdown.Copyright,
