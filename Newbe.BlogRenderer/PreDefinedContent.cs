@@ -8,9 +8,94 @@ public static class PreDefinedContent
 - 版权声明： 本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！";
 
     public const string EndingTemplate =
-        @"**感谢您的阅读，如果您觉得本文有用，请点赞、关注和转发。**";
+        @"
+&&&&---default---
+感谢您的阅读，如果您觉得本文有用，请点赞、关注和转发。
+&&&&---wechat---
+感谢您的阅读，如果您觉得本文有用，欢迎分享给自己的老伙计们。
+欢迎加入Q群 610394020 一起讨论技术。
+&&&&---cnblogs---
+感谢阅读，如果觉得本文有用，不妨点击推荐🥰或者在评论区留下 Mark，让更多的人可以看到。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---zhihu---
+感谢您的阅读，如果您觉得本文有用，请赞同🥰或者留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---TencentCloud---
+感谢您的阅读，如果您觉得本文有用，请留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---toutiao---
+感谢您的阅读，如果您觉得本文有用，请留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---infoq---
+感谢您的阅读，如果您觉得本文有用，请留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---bilibili---
+感谢您的阅读，如果您觉得本文有用，快来一键三连~🥰
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---juejin---
+感谢您的阅读，如果您觉得本文有用，请留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---csdn---
+感谢您的阅读，如果您觉得本文有用，请留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---aliyun---
+感谢您的阅读，如果您觉得本文有用，请留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---sifou---
+感谢您的阅读，如果您觉得本文有用，请留下评论。
+您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
+![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+";
 
-    public const string AdTemplate = @"> **可发帖可群聊的技术交流方式已经上线，欢迎通过链接，加入我们一起讨论。 <https://www.newbe.pro/links/>**";
+    public const string AdTemplate = @"
+&&&&---default---
+> **可发帖可群聊的技术交流方式已经上线，欢迎通过链接，加入我们一起讨论。 <https://www.newbe.pro/links/>**
+&&&&---wechat---
+> 感谢您的阅读，如果您觉得本文有用，欢迎分享给自己的老伙计们。
+> 欢迎加入圈群 610394020 一起讨论技术。
+&&&&---cnblogs---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---zhihu---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---TencentCloud---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---toutiao---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---infoq---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---bilibili---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---juejin---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---csdn---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---aliyun---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+&&&&---sifou---
+> 欢迎关注作者的微信公众号“newbe技术专栏”，获取更多技术内容。
+> ![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
+";
+
+    public const string AiTemplate = @"
+> 本内容采用人工智能辅助协作，经本人审核，符合本人观点与立场。";
 
     public const string TestMarkdown = @"---
                                          date: 2023-01-01

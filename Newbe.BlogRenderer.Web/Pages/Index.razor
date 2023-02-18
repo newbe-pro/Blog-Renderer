@@ -67,6 +67,9 @@
         <Card Bordered="false" Title="Ad Template">
             <TextArea @bind-Value="AdTemplate" Style="height: 200px" Id="ad_template"></TextArea>
         </Card>
+        <Card Bordered="false" Title="AI Template">
+            <TextArea @bind-Value="AiTemplate" Style="height: 200px" Id="ai_template"></TextArea>
+        </Card>
     </Col>
     <Col Span="12">
         <Card Bordered="false" Title="Render preview">
@@ -131,6 +134,7 @@
 
     public string EndingTemplate { get; set; } = PreDefinedContent.EndingTemplate;
     public string AdTemplate { get; set; } = PreDefinedContent.AdTemplate;
+    public string AiTemplate { get; set; } = PreDefinedContent.AiTemplate;
 
     private RenderPlatform _lastPlatform = RenderPlatform.Wechat;
 
@@ -160,7 +164,8 @@
             {
                 CopyrightTemplate = CopyrightTemplate,
                 EndingTemplate = EndingTemplate,
-                AdTemplate = AdTemplate
+                AdTemplate = AdTemplate,
+                AiTemplate = AiTemplate
             });
             HtmlOut = result;
             YamlFront = await YamlFrontMatterRetriever.GetYamlFrontAsync(MarkdownSource);
@@ -181,7 +186,8 @@
             {
                 CopyrightTemplate = CopyrightTemplate,
                 EndingTemplate = EndingTemplate,
-                AdTemplate = AdTemplate
+                AdTemplate = AdTemplate,
+                AiTemplate = AiTemplate
             });
             CopyOut = result;
             _ = Task.Run(async () =>

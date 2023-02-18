@@ -14,6 +14,7 @@ public static class Consts
             public const string Ending = "<!-- ending -->";
             public const string YamlFrontMatter = "<!-- YamlFrontMatter -->";
             public const string Ad = "<!-- ad -->";
+            public const string Ai = "Source: Conversation with Bing";
         }
 
         public static class Mic
