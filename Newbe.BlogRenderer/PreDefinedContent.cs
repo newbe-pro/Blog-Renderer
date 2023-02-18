@@ -16,44 +16,24 @@ public static class PreDefinedContent
 欢迎加入Q群 610394020 一起讨论技术。
 &&&&---cnblogs---
 感谢阅读，如果觉得本文有用，不妨点击推荐🥰或者在评论区留下 Mark，让更多的人可以看到。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---zhihu---
 感谢您的阅读，如果您觉得本文有用，请赞同🥰或者留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---TencentCloud---
 感谢您的阅读，如果您觉得本文有用，请留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---toutiao---
 感谢您的阅读，如果您觉得本文有用，请留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---infoq---
 感谢您的阅读，如果您觉得本文有用，请留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---bilibili---
 感谢您的阅读，如果您觉得本文有用，快来一键三连~🥰
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---juejin---
 感谢您的阅读，如果您觉得本文有用，请留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---csdn---
 感谢您的阅读，如果您觉得本文有用，请留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---aliyun---
 感谢您的阅读，如果您觉得本文有用，请留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 &&&&---sifou---
 感谢您的阅读，如果您觉得本文有用，请留下评论。
-您也可以关注微信公众号“newbe技术专栏”，获取更多技术内容。
-![关注微信公众号“newbe技术专栏”](https://www.newbe.pro/images/weixin_public_qrcode.png)
 ";
 
     public const string AdTemplate = @"
