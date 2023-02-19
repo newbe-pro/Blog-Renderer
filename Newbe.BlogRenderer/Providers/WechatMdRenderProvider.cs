@@ -12,7 +12,7 @@ public class WechatMdRenderProvider : IMdRenderProvider
             .UsePipeTables()
             .UseFootnotes();
         var pipeline = builder.Build();
-        var html = Markdown.ToHtml(source, pipeline);
+        var html = Markdig.Markdown.ToHtml(source, pipeline);
         return Task.FromResult(html);
     }
 }

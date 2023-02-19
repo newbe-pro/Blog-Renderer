@@ -12,7 +12,7 @@ public class YamlFrontMatterRetriever : IYamlFrontMatterRetriever
             .UseYamlFrontMatter()
             .UseFootnotes();
         var pipeline = builder.Build();
-        var markdownDocument = Markdown.Parse(markdown, pipeline);
+        var markdownDocument = Markdig.Markdown.Parse(markdown, pipeline);
         var yamlFront = new YamlFront();
         foreach (var markdownObject in markdownDocument.Descendants())
         {

@@ -8,6 +8,8 @@
     <ItemGroup>
         <PackageVersion Include="Markdig" Version="0.30.4"/>
         <PackageVersion Include="Markdown.ColorCode" Version="1.2.0-preview-2"/>
+        <PackageVersion Include="WebStoating.Markdig.Prism" Version="1.0.0"/>
+        <PackageVersion Include="Markdown.ColorCode" Version="1.0.2" />
 
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.4.1"/>
         <PackageVersion Include="NUnit" Version="3.13.3"/>

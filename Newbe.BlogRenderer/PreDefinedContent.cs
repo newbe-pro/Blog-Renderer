@@ -216,6 +216,8 @@ foreach (var node in root)
 
 <!-- md Chat-AI-Footer.md -->
 
+<!-- ad -->
+
 <!-- ending -->
 
 <!-- copyright-->

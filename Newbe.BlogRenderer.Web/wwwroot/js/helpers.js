@@ -43,15 +43,38 @@
     });
 };
 
+const bilibiliRender = (id) => {
+    // set style for pre.code
+    // const codePres = document.querySelectorAll(id + " pre code");
+    // codePres.forEach(function (codePre) {
+    //     // replace space with &nbsp;
+    //     codePre.innerHTML = codePre.innerHTML.replace(/> </g, ">&nbsp;<");
+    // });
+    document.querySelectorAll(id + " pre code").forEach((block) => {
+        console.log("bilibiliRender", block);
+        Prism.highlightElement(block);
+    });
+}
+
+const planTextPlatforms = ["InfoQ", "TencentCloud", "Csdn", "Sifou"];
+const disableHighlightPlatforms = planTextPlatforms.concat(["Bilibili"]);
+
 window.mdRender = function (platform, id) {
     console.log("jsRender", platform, id);
     // highlight id
-    document.querySelectorAll(id + " pre code").forEach((block) => {
-        hljs.highlightBlock(block);
-    });
+    if (!disableHighlightPlatforms.includes(platform)) {
+        document.querySelectorAll(id + " pre code").forEach((block) => {
+            console.log("highlight", block);
+            hljs.highlightBlock(block);
+        });
+    }
+
     switch (platform) {
         case "Wechat":
             wechatRender(id);
+            break;
+        case "Bilibili":
+            bilibiliRender(id);
             break;
     }
 
@@ -61,7 +84,6 @@ window.copyOut = async function (platform, content) {
     console.info("copyOut", platform);
     let copyMimeType = 'text/html';
     let contentToCopy = document.querySelector("#copyOut").innerHTML;
-    const planTextPlatforms = ["InfoQ", "TencentCloud", "Bilibili", "Csdn", "Sifou"];
     if (planTextPlatforms.includes(platform)) {
         // for plain text, it should come from C# since there is some html tag in the content.
         // it is not a good idea to use innerHTML to get the content.
